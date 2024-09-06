@@ -1,0 +1,39 @@
+caption_model: bert
+noamopt: true
+noamopt_warmup: 2000
+label_smoothing: 0.0
+input_json: data/cocotalk.json
+input_label_h5: data/cocotalk_label.h5
+input_att_dir: data/cocobu_att
+seq_per_img: 5
+batch_size: 10
+learning_rate: 0.0005
+
+# Notice: because I'm to lazy, I reuse the option name for RNNs to set the hyperparameters for transformer:
+# N=num_layers
+# d_model=input_encoding_size
+# d_ff=rnn_size
+
+# will be ignored
+num_layers: 12
+input_encoding_size: 1024
+rnn_size: 4096
+
+# Transformer config
+N_enc: 12
+N_dec: 12
+d_model: 1024
+d_ff: 4096
+num_att_heads: 16
+dropout: 0.1
+
+
+learning_rate_decay_start: 0
+scheduled_sampling_start: -1 
+save_checkpoint_every: 3000
+language_eval: 1
+val_images_use: 5000
+max_epochs: 15
+train_sample_n: 5
+
+REFORWARD: false
